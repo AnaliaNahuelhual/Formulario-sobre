@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href=" https://unsplash.com/es/fotos/el-agua-dinamica-salpica-sobre-el-fondo-azul-verdoso-f8UXCi2K9MA">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!---COMIENZO DE HEADER-->
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="#">Sobre nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+        <h1>Bienvenidos</h1>
+        <p>Haga <strong>Click</strong> en el botón para completar el formulario</p>
+    </header>
+    <!-----COMIENZO DE MAIN-->
+    <main class="formulario">
+    <!----BOTÓN PARA ABRIR Y CERRAR-->
+    <button id="open-btn" class="btn-primario" type="button">Abrir sobre</button>
+    <!-----CONTENEDOR DEL SOBRE-->
+    <div id="envelope" class="envelope-wrapper"></div>
+    <!-----SOLAPA---->
+    <div class="flap"></div>
+    <!----HOJA DEL FORMULARIO---->
+    <form id="formulario-sobre" novalidate>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="ingrese su nombre">
+        <br>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="ingrese su email">
+        <br>
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" placeholder="ingrese su contraseña">
+        <br>
+        <button type="submit" class="btn-enviar">Enviar</button>
+    </form>
+        <div class="pocket"></div>
+    </main>
+
+    <!----COMIENZO FOOTER----->
+        <footer>
+            <p>Autora: Analia Nahuelhual</p>
+            <p>Telefono <a href="tel:+54123456"> +54 123456</a></p>
+            <p>Proyecto Final Desarrollo Web 2026</p>
+        </footer>
+        <!----JAVASCRIPT-->
+    <script src="app.js"></script>
+</body>
+</html>
