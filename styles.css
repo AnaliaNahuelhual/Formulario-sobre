@@ -26,7 +26,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   min-height: 100vh;
   display: flex;
@@ -37,7 +36,7 @@ body {
   color: var(--texto-carta);
 }
 
-/*HEADER*/
+/* HEADER */
 .header {
   width: 100%;
   max-width: 1100px;
@@ -84,7 +83,7 @@ body {
   font-size: 1rem;
 }
 
-/*MAIN-SOBRE */
+/* MAIN SOBRE (INDEX) */
 .formulario {
   position: relative;
   display: flex;
@@ -212,7 +211,6 @@ body {
   pointer-events: none;
 }
 
-/* Estado abierto */
 .formulario.open .flap {
   transform: rotateX(180deg);
   z-index: 1;
@@ -223,12 +221,69 @@ body {
   z-index: 4;
 }
 
-/*FOOTER*/
+/* CONTENEDORES PARA NOSOTROS Y SERVICIOS */
+.contenedor-nosotros,
+.contenedor-servicios {
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tarjeta-objetivo,
+.tarjeta-servicio {
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 54, 58, 0.12);
+  border-left: 5px solid var(--color-solapa);
+}
+
+.tarjeta-objetivo p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--texto-carta);
+}
+
+.tarjeta-servicio ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tarjeta-servicio li {
+  font-size: 1.05rem;
+  color: var(--texto-carta);
+}
+
+/* FOOTER */
 footer {
   text-align: center;
   font-size: 0.85rem;
   color: #004d40;
   line-height: 1.6;
+}
+
+#btn-revelar-email {
+  background: none;
+  border: none;
+  color: #00796b;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin: 0;
+  transition: opacity 0.2s ease;
+}
+
+#btn-revelar-email:hover {
+  opacity: 0.7;
 }
 
 footer a {
@@ -241,41 +296,33 @@ footer a:hover {
   text-decoration: underline;
 }
 
-
 @media (max-width: 480px) {
   .header h1 {
     font-size: 1.7rem;
   }
-
   .formulario,
   .envelope-wrapper {
     width: 290px;
   }
-
   .envelope-wrapper {
     height: 200px;
   }
-
   .flap {
     border-left-width: 145px;
     border-right-width: 145px;
     border-top-width: 95px;
   }
-
   #formulario-sobre {
     left: 15px;
     width: 260px;
   }
-
   .pocket {
     border-left-width: 145px;
     border-right-width: 145px;
     border-top-width: 85px;
     border-bottom-width: 115px;
   }
-
   .formulario.open #formulario-sobre {
     transform: translateY(-115px);
   }
 }
-/*SUJETO A MODIFICACIONES*/
