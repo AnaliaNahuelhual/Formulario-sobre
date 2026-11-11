@@ -10,18 +10,14 @@
   --sombra-fuerte: 0 20px 45px rgba(0, 0, 0, 0.45);
 }
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  background-image: 
-    linear-gradient(rgba(224, 247, 250, 0.82), rgba(240, 253, 250, 0.88)), 
-    var(--fondo-url);
+  background-image: linear-gradient(rgba(224, 247, 250, 0.82), rgba(240, 253, 250, 0.88)), var(--fondo-url);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -42,6 +38,7 @@ body {
   max-width: 1100px;
   position: relative;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .header nav {
@@ -49,13 +46,14 @@ body {
   justify-content: flex-end;
   width: 100%;
   padding-right: 12px;
+  margin-bottom: 15px;
 }
 
 .header nav ul {
   display: flex;
   gap: 20px;
   list-style: none;
-  margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .header nav a {
@@ -71,16 +69,16 @@ body {
 }
 
 .header h1 {
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   color: #00363a;
-  letter-spacing: -0.5px;
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-bottom: 12px;
 }
 
 .header p {
   color: #004d40;
-  margin-top: 4px;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  margin-top: 5px;
 }
 
 /* MAIN SOBRE (INDEX) */
@@ -90,7 +88,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 320px;
-  margin: 40px auto;
+  margin: 30px auto;
 }
 
 .btn-primario {
@@ -104,12 +102,11 @@ body {
   cursor: pointer;
   box-shadow: 0 8px 18px rgba(0, 77, 64, 0.35);
   margin-bottom: 25px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .btn-primario:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 22px rgba(0, 77, 64, 0.45);
 }
 
 .envelope-wrapper {
@@ -141,7 +138,7 @@ body {
   left: 20px;
   width: 280px;
   background-color: var(--color-carta);
-  padding: 16px 18px;
+  padding: 14px 16px;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -151,45 +148,43 @@ body {
   flex-direction: column;
 }
 
+#formulario-sobre h2 {
+  font-size: 14px;
+  color: #004d40;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
 #formulario-sobre label {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   color: #004d40;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 #formulario-sobre input {
   width: 100%;
-  padding: 7px 9px;
+  padding: 6px 8px;
   border: 1.5px solid var(--borde-input);
   border-radius: 6px;
-  font-size: 12px;
+  font-size: 11px;
   background-color: #f7fafc;
-  color: var(--texto-carta);
   outline: none;
   margin-bottom: 8px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-#formulario-sobre input:focus {
-  border-color: #00796b;
-  background-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.15);
 }
 
 .btn-enviar {
   border: none;
   border-radius: 6px;
-  padding: 8px 16px;
+  padding: 8px 14px;
   background-color: #00796b;
   color: #ffffff;
   font-weight: 700;
   font-size: 0.85rem;
   cursor: pointer;
   align-self: flex-start;
-  transition: background-color 0.2s ease;
+  margin-top: 4px;
 }
 
 .btn-enviar:hover {
@@ -221,54 +216,67 @@ body {
   z-index: 4;
 }
 
-/* CONTENEDORES PARA NOSOTROS Y SERVICIOS */
-.contenedor-nosotros,
-.contenedor-servicios {
+/* SECCIONES Y TARJETAS */
+.contenedor-nosotros, .contenedor-servicios {
   width: 100%;
   max-width: 900px;
   margin: 30px auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 25px;
 }
 
-.tarjeta-objetivo,
-.tarjeta-servicio {
+.tarjeta-objetivo, .tarjeta-servicios {
   background-color: rgba(255, 255, 255, 0.92);
-  padding: 28px;
+  padding: 30px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 54, 58, 0.12);
   border-left: 5px solid var(--color-solapa);
 }
 
+.tarjeta-objetivo h2, .tarjeta-servicios h2 {
+  margin-bottom: 15px;
+}
+
 .tarjeta-objetivo p {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--texto-carta);
+  line-height: 1.7;
 }
 
-.tarjeta-servicio ul {
-  list-style-type: disc;
-  padding-left: 20px;
+.tarjeta-servicios ul {
+  list-style-type: none;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-left: 0;
+  margin-top: 10px;
 }
 
-.tarjeta-servicio li {
-  font-size: 1.05rem;
+.tarjeta-servicios li {
+  background-color: #ffffff;
   color: var(--texto-carta);
+  font-size: 1rem;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  flex: 1 1 250px;
+  transition: transform 0.3s ease;
+  line-height: 1.6;
+}
+
+.tarjeta-servicios li:hover {
+  transform: translateY(-5px);
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #004d40;
-  line-height: 1.6;
+  line-height: 2;
+  margin-top: 30px;
 }
 
-#btn-revelar-email {
+.btn-revelar-email {
   background: none;
   border: none;
   color: #00796b;
@@ -277,52 +285,13 @@ footer {
   font-weight: 700;
   cursor: pointer;
   text-decoration: underline;
-  padding: 0;
-  margin: 0;
-  transition: opacity 0.2s ease;
-}
-
-#btn-revelar-email:hover {
-  opacity: 0.7;
-}
-
-footer a {
-  color: #00796b;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
 }
 
 @media (max-width: 480px) {
-  .header h1 {
-    font-size: 1.7rem;
-  }
-  .formulario,
-  .envelope-wrapper {
-    width: 290px;
-  }
-  .envelope-wrapper {
-    height: 200px;
-  }
-  .flap {
-    border-left-width: 145px;
-    border-right-width: 145px;
-    border-top-width: 95px;
-  }
-  #formulario-sobre {
-    left: 15px;
-    width: 260px;
-  }
-  .pocket {
-    border-left-width: 145px;
-    border-right-width: 145px;
-    border-top-width: 85px;
-    border-bottom-width: 115px;
-  }
-  .formulario.open #formulario-sobre {
-    transform: translateY(-115px);
-  }
+  .header h1 { font-size: 1.5rem; }
+  .formulario, .envelope-wrapper { width: 280px; }
+  .envelope-wrapper { height: 190px; }
+  .flap { border-left-width: 140px; border-right-width: 140px; border-top-width: 90px; }
+  #formulario-sobre { left: 15px; width: 250px; }
+  .pocket { border-left-width: 140px; border-right-width: 140px; border-top-width: 75px; border-bottom-width: 110px; }
 }
