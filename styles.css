@@ -64,8 +64,11 @@ body {
   transition: color 0.2s ease;
 }
 
-.header nav a:hover {
+.header nav a:hover,
+.header nav a.active {
   color: var(--acento-cyan);
+  border-bottom: 2px solid var(--acento-cyan);
+  padding-bottom: 2px;
 }
 
 .header h1 {
@@ -163,7 +166,8 @@ body {
   margin-bottom: 3px;
 }
 
-#formulario-sobre input {
+#formulario-sobre input,
+#formulario-sobre textarea {
   width: 100%;
   padding: 6px 8px;
   border: 1.5px solid var(--borde-input);
@@ -172,6 +176,14 @@ body {
   background-color: #f7fafc;
   outline: none;
   margin-bottom: 8px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+#formulario-sobre input:focus,
+#formulario-sobre textarea:focus {
+  border-color: var(--acento-cyan);
+  background-color: #fffef0;
 }
 
 .btn-enviar {

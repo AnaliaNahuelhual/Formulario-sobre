@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ANIMACIÓN DEL SOBRE (Manipulación del DOM y Eventos)
+    // 1. ANIMACIÓN DEL SOBRE (Abrir / Cerrar con el botón principal)
     const openBtn = document.getElementById('open-btn');
     const contenedorFormulario = document.querySelector('.formulario');
 
@@ -11,24 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // FOCUS INTERACTIVO EN INPUTS (Eventos DOM)
-    const inputNombre = document.getElementById('nombre');
-    if (inputNombre) {
-        inputNombre.addEventListener("focus", () => {
-            inputNombre.style.backgroundColor = "lightyellow";
-        });
-        inputNombre.addEventListener("blur", () => {
-            inputNombre.style.backgroundColor = "";
-        });
-    }
-
-    // VALIDACIÓN DE FORMULARIO Y LOCALSTORAGE
+    // 2. VALIDACIÓN DE FORMULARIO, LOCALSTORAGE Y CIERRE AUTOMÁTICO AL ENVIAR
     const formularioSobre = document.getElementById('formulario-sobre');
     if (formularioSobre) {
         formularioSobre.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const nombre = inputNombre.value.trim();
+            const nombre = document.getElementById('nombre').value.trim();
             const email = document.getElementById('email').value.trim();
             const mensaje = document.getElementById('mensaje').value.trim();
 
@@ -37,7 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            if (!email.includes("@") || !email.includes('.')) {
+            // Validación de email más estricta con Expresión Regular (RegEx)
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
                 alert("Por favor, ingrese un correo electrónico válido.");
                 return;
             }
@@ -51,17 +42,32 @@ document.addEventListener("DOMContentLoaded", () => {
                 fecha: new Date().toLocaleDateString()
             };
 
-            // Almacenamiento local (LocalStorage convertido con JSON)
-            let consultas = JSON.parse(localStorage.getItem('consultasSeguridad')) || [];
-            consultas.push(nuevaConsulta);
-            localStorage.setItem('consultasSeguridad', JSON.stringify(consultas));
+            // Almacenamiento local con control de errores (try/catch)
+            try {
+                let consultas = JSON.parse(localStorage.getItem('consultasSeguridad')) || [];
+                consultas.push(nuevaConsulta);
+                localStorage.setItem('consultasSeguridad', JSON.stringify(consultas));
 
-            alert('¡Consulta de seguridad enviada y guardada con éxito!');
-            formularioSobre.reset();
+                alert('¡Consulta de seguridad enviada y guardada con éxito!');
+                
+                // Resetea los campos del formulario
+                formularioSobre.reset();
+
+                // Cierra el sobre automáticamente y cambia el texto del botón a "Abrir sobre"
+                if (contenedorFormulario && contenedorFormulario.classList.contains("open")) {
+                    contenedorFormulario.classList.remove("open");
+                    if (openBtn) {
+                        openBtn.textContent = "Abrir sobre";
+                    }
+                }
+            } catch (error) {
+                console.error("Error al guardar en localStorage:", error);
+                alert("Hubo un problema al guardar la consulta en el navegador.");
+            }
         });
     }
 
-    // CORREO SEGURO (Protección anti-spam en el DOM)
+    // 3. CORREO SEGURO (Protección anti-spam unificada en el footer)
     const botonesRevelar = document.querySelectorAll('.btn-revelar-email');
     botonesRevelar.forEach(btn => {
         btn.addEventListener('click', () => {

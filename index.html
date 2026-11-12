@@ -11,14 +11,14 @@
     <header class="header">
         <nav>
             <ul>
-                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html" class="active">Inicio</a></li>
                 <li><a href="nosotros.html">Sobre nosotros</a></li>
                 <li><a href="servicios.html">Servicios</a></li>
                 <li><a href="consejos.html">Consejos</a></li>
             </ul>
         </nav>
         <h1>Ciberseguridad y Resguardo Digital</h1>
-        <p>Haga <strong>Click</strong> en el botón para enviar su consulta</p>
+        <p>Haga <strong>Click</strong> en el botón para abrir el formulario de consulta</p>
     </header>
 
     <!-- COMIENZO DE MAIN -->
@@ -36,25 +36,24 @@
         <form id="formulario-sobre" novalidate>
             <h2>Consulta de Seguridad</h2>
             <label for="nombre">Nombre/Empresa</label>
-            <input type="text" id="nombre" name="nombre" placeholder="ingrese su nombre">
+            <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">
             
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="ingrese su email">
+            <input type="email" id="email" name="email" placeholder="Ingrese su email">
             
             <label for="mensaje">Mensaje</label>
-            <input type="text" id="mensaje" name="mensaje" placeholder="escriba su consulta">
+            <textarea id="mensaje" name="mensaje" placeholder="Escriba su consulta" rows="3"></textarea>
             
             <button type="submit" class="btn-enviar">Enviar</button>
         </form>
         <div class="pocket"></div>
     </main>
 
-
     <!-- COMIENZO FOOTER -->
     <footer>
         <p>Autora: Analia Nahuelhual</p>
-        <p>Telefono <a href="tel:+54123456" rel="nofollow noopener"> +54 123456</a></p>
-        <p>Email <button class="btn-revelar-email" data-usuario="form.seguro" data-dominio="sobre-form.com">Haga clic para revelar el correo</button></p>
+        <p>Teléfono: <a href="tel:+54123456789" rel="nofollow noopener">+54 123456789</a></p>
+        <p>Email: <button class="btn-revelar-email" data-usuario="contacto" data-dominio="sobreform.com">Haga clic para revelar el correo</button></p>
     </footer>
 
     <!-- JAVASCRIPT -->
