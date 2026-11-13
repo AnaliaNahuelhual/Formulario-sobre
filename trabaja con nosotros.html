@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabaja con Nosotros</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- COMIENZO DE HEADER -->
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="consejos.html">Consejos</a></li>
+                <li><a href="Trabaja con Nosotros.html">Trabaja con Nosotros</a></li>
+            </ul>
+        </nav>
+        <h1>Trabaja con nosotros</h1>
+        <p>Sumate a un equipo que impulsa el futuro. Buscamos personas con talento, pasión y ganas de crecer.</p>
+    </header>
+    
+    <!-----COMIENZO DE MAIN---->
+
+    <main class="formulario">
+    <form id="cv-formilario">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Ingrese su email">
+            <br>
+            <label for="cv">Adjuntar tu CV</label>
+            <input type="file" id="cv" name="cv" accept=".pdf" required>
+            <button type="submit" class="btn-enviar">Enviar</button>
+            <p id="mensaje-exito" class="mensaje hidden">¡CV enviado con éxito! Nos pondremos en contacto pronto.</p>
+    </form>
+</main>
+    <!-- COMIENZO FOOTER -->
+    <footer>
+        <p>Autora: Analia Nahuelhual</p>
+        <p>Teléfono: <a href="tel:+54123456789" rel="nofollow noopener">+54 1234</a></p>
+        <p>Email: <button class="btn-revelar-email" data-usuario="contacto" data-dominio="sobreform.com">Haga clic para revelar el correo</button></p>
+    </footer>
+<script src="app.js"></script>
+</body>
+</html>
