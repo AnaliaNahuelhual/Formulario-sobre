@@ -84,14 +84,14 @@ body {
   margin-top: 5px;
 }
 
-/* MAIN SOBRE (INDEX) */
+/* MAIN SOBRE */
 .formulario {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 320px;
-  margin: 30px auto;
+  margin: 40px auto;
 }
 
 .btn-primario {
@@ -112,6 +112,7 @@ body {
   transform: translateY(-2px);
 }
 
+/* CONTENEDOR PRINCIPAL DEL SOBRE */
 .envelope-wrapper {
   width: 320px;
   height: 220px;
@@ -121,9 +122,22 @@ body {
   position: relative;
 }
 
+/* FONDO RECTANGULAR DE LA SOLAPA */
+.flap-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110px;
+  background-color: var(--color-solapa);
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+/* SOLAPA (TRIÁNGULO) */
 .flap {
   position: absolute;
-  top: 65px;
+  top: 0;
   left: 0;
   width: 0;
   height: 0;
@@ -135,22 +149,27 @@ body {
   transition: transform 0.45s ease;
 }
 
+/* LA HOJA (FORMULARIO) */
 #formulario-sobre {
   position: absolute;
-  top: 75px;
-  left: 20px;
-  width: 280px;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 290px;
+  max-height: 180px; /* Altura cerrada: se esconde perfecto */
   background-color: var(--color-carta);
-  padding: 14px 16px;
-  border-radius: 10px;
+  padding: 12px 15px;
+  border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), max-height 0.5s ease;
   display: flex;
   flex-direction: column;
+  overflow-y: auto; /* Scroll interno si hay muchos campos */
 }
 
+/* Estilos de los elementos internos de la hoja */
 #formulario-sobre h2 {
   font-size: 14px;
   color: #004d40;
@@ -163,7 +182,8 @@ body {
   font-weight: 700;
   color: #004d40;
   text-transform: uppercase;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
+  display: block;
 }
 
 #formulario-sobre input,
@@ -171,13 +191,13 @@ body {
   width: 100%;
   padding: 6px 8px;
   border: 1.5px solid var(--borde-input);
-  border-radius: 6px;
-  font-size: 11px;
+  border-radius: 5px;
+  font-size: 12px;
   background-color: #f7fafc;
   outline: none;
   margin-bottom: 8px;
   font-family: inherit;
-  resize: vertical;
+  resize: none;
 }
 
 #formulario-sobre input:focus,
@@ -188,21 +208,23 @@ body {
 
 .btn-enviar {
   border: none;
-  border-radius: 6px;
-  padding: 8px 14px;
+  border-radius: 5px;
+  padding: 8px 16px;
   background-color: #00796b;
   color: #ffffff;
   font-weight: 700;
   font-size: 0.85rem;
   cursor: pointer;
-  align-self: flex-start;
-  margin-top: 4px;
+  align-self: flex-end;
+  margin-top: auto;
+  transition: background 0.2s ease;
 }
 
 .btn-enviar:hover {
   background-color: #004d40;
 }
 
+/* BOLSILLO INFERIOR */
 .pocket {
   position: absolute;
   bottom: 0;
@@ -211,24 +233,32 @@ body {
   height: 0;
   border-left: 160px solid var(--color-bolsillo);
   border-right: 160px solid var(--color-bolsillo);
-  border-top: 100px solid transparent;
-  border-bottom: 120px solid var(--color-bolsillo);
+  border-top: 90px solid transparent;
+  border-bottom: 130px solid var(--color-bolsillo);
   border-radius: 0 0 12px 12px;
-  z-index: 2;
+  z-index: 4;
   pointer-events: none;
 }
 
+/* ANIMACIONES DE APERTURA */
 .formulario.open .flap {
   transform: rotateX(180deg);
   z-index: 1;
 }
 
-.formulario.open #formulario-sobre {
-  transform: translateY(-135px);
-  z-index: 4;
+.formulario.open .flap-bg {
+  opacity: 0;
+  pointer-events: none;
 }
 
-/* SECCIONES Y TARJETAS */
+.formulario.open #formulario-sobre {
+  transform: translateY(-130px) translateX(-50%); /* Sube para mostrarse */
+  max-height: 600px; /* Se expande hacia abajo para mostrar todos los campos */
+  z-index: 5;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+
 .contenedor-nosotros, .contenedor-servicios {
   width: 100%;
   max-width: 900px;
@@ -279,7 +309,7 @@ body {
   transform: translateY(-5px);
 }
 
-/* FOOTER */
+/*FOOTER*/
 footer {
   text-align: center;
   font-size: 0.9rem;
@@ -299,11 +329,39 @@ footer {
   text-decoration: underline;
 }
 
+
 @media (max-width: 480px) {
   .header h1 { font-size: 1.5rem; }
+
   .formulario, .envelope-wrapper { width: 280px; }
-  .envelope-wrapper { height: 190px; }
-  .flap { border-left-width: 140px; border-right-width: 140px; border-top-width: 90px; }
-  #formulario-sobre { left: 15px; width: 250px; }
-  .pocket { border-left-width: 140px; border-right-width: 140px; border-top-width: 75px; border-bottom-width: 110px; }
+  .envelope-wrapper { height: 210px; }
+
+  .flap-bg { height: 100px; }
+
+  .flap { 
+    border-left-width: 140px; 
+    border-right-width: 140px; 
+    border-top-width: 100px; 
+  }
+
+  #formulario-sobre { 
+    width: 260px; 
+    max-height: 160px; 
+    top: 15px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+  }
+
+  /* La hoja se expande también en celulares al abrirse */
+  .formulario.open #formulario-sobre {
+    transform: translateY(-120px) translateX(-50%);
+    max-height: 550px; 
+  }
+
+  .pocket { 
+    border-left-width: 140px; 
+    border-right-width: 140px; 
+    border-top-width: 80px; 
+    border-bottom-width: 110px; 
+  }
 }

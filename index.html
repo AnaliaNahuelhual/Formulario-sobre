@@ -27,27 +27,32 @@
         <!-- BOTÓN PARA ABRIR Y CERRAR -->
         <button id="open-btn" class="btn-primario" type="button">Abrir sobre</button>
         
-        <!-- CONTENEDOR DEL SOBRE -->
-        <div id="envelope" class="envelope-wrapper"></div>
-        
-        <!-- SOLAPA -->
-        <div class="flap"></div>
-        
-        <!-- HOJA DEL FORMULARIO -->
-        <form id="formulario-sobre" novalidate>
-            <h2>Consulta de Seguridad</h2>
-            <label for="nombre">Nombre/Empresa</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">
+        <!-- CONTENEDOR DEL SOBRE (TODO VA AQUÍ ADENTRO) -->
+        <div id="envelope" class="envelope-wrapper">
+            <!-- FONDO DE LA SOLAPA -->
+            <div class="flap-bg"></div>
             
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Ingrese su email">
-        
-            <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" placeholder="Escriba su consulta" rows="3"></textarea>
+            <!-- SOLAPA -->
+            <div class="flap"></div>
             
-            <button type="submit" class="btn-enviar">Enviar</button>
-        </form>
-        <div class="pocket"></div>
+            <!-- HOJA DEL FORMULARIO -->
+            <form id="formulario-sobre" novalidate>
+                <h2>Consulta de Seguridad</h2>
+                <label for="nombre">Nombre/Empresa</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Ingrese su email">
+            
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Escriba su consulta" rows="3"></textarea>
+                
+                <button type="submit" class="btn-enviar">Enviar</button>
+            </form>
+            
+            <!-- BOLSILLO -->
+            <div class="pocket"></div>
+        </div>
     </main>
 
     <!-- COMIENZO FOOTER -->
