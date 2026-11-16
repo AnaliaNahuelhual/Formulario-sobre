@@ -80,6 +80,46 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // 4. CONSUMO DE API PÚBLICA (Herramienta de IP de Seguridad - Cumplimiento rúbrica)
+    const apiContainer = document.getElementById('api-container');
+    
+    if (apiContainer) {
+        // Estado de carga inicial
+        apiContainer.innerHTML = `<p class="loading">Verificando conexión segura y red...</p>`;
+
+        const urlAPI = 'https://api.ipify.org?format=json';
+
+        fetch(urlAPI)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al conectar con el servidor de red.');
+                }
+                return response.json(); // Conversión de la respuesta con json[cite: 2, 3]
+            })
+            .then(data => {
+                // Validación de ausencia de resultados
+                if (!data.ip) {
+                    apiContainer.innerHTML = `<p>No se encontró información de la IP.</p>`;
+                    return;
+                }
+
+                // Mostrar los datos externos dentro del DOM[cite: 2, 3]
+                apiContainer.innerHTML = `
+                    <div style="background: #e0f7fa; padding: 15px; border-radius: 8px; border-left: 4px solid #004d40;">
+                        <p><strong>Dirección IP detectada:</strong> ${data.ip}</p>
+                        <p style="font-size: 0.85rem; color: #00796b; margin-top: 5px;">⚠️ Mantenga su red protegida y evite compartir su IP con fuentes desconocidas.</p>
+                    </div>
+                `;
+            })
+            .catch(error => {
+                // Manejo de errores obligatorio[cite: 2, 3]
+                console.error("Hubo un problema con la API:", error);
+                apiContainer.innerHTML = `
+                    <p style="color: #c62828;">❌ No se pudo cargar la información de seguridad en este momento. Verifique su conexión a internet.</p>
+                `;
+            });
+    }
+
 });
 // PROFE TUVE QUE HACER VARIAS VECES EL FORMULARIO PORQUE NO CUMPLIA CON LAS CONSIGNA, SINO TENGO OTRA PÁG
 
