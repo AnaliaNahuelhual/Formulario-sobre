@@ -16,17 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (formularioSobre) {
         formularioSobre.addEventListener('submit', (e) => {
             e.preventDefault();
-
+        //obtiene los valores, lee lo que escribio el usuario. Trim elimina espacios en blancos
             const nombre = document.getElementById('nombre').value.trim();
             const email = document.getElementById('email').value.trim();
             const mensaje = document.getElementById('mensaje').value.trim();
-
+        //si un campo esta vacio muestra un alerta. Return detiene, ña ejecucuión
             if (nombre === "" || email === "" || mensaje === "") {
                 alert("Por favor, complete todos los campos obligatorios.");
                 return;
             }
 
-            // Validación de email más estricta con Expresión Regular (RegEx)
+            // Validación de email con Regex, comprueba que este bien escrito
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 alert("Por favor, ingrese un correo electrónico válido.");
@@ -42,7 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 fecha: new Date().toLocaleDateString()
             };
 
-            // Almacenamiento local con control de errores (try/catch)
+            // Guarda en localStorage con  (try/catch)
+            //JSON.parse convierte el texto en un array de objeto,Si no hay nada lo devuelve nulo
+            //Consultas.push, agrega una nueva consulta al final de arrays.
+            //JSCON.stringify (consultas) convierte el array a texto (locals solo guarda texto)
+            //LocalStorage.setitem, guarda texto en el navegador
+            //TRY/CATCH, si algo falla, no rompe la pagina, control
             try {
                 let consultas = JSON.parse(localStorage.getItem('consultasSeguridad')) || [];
                 consultas.push(nuevaConsulta);
@@ -67,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 3. CORREO SEGURO (Protección anti-spam unificada en el footer)
+    // 3. CORREO SEGURO (Protección anti-spam)
     const botonesRevelar = document.querySelectorAll('.btn-revelar-email');
     botonesRevelar.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -80,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 4. CONSUMO DE API PÚBLICA (Herramienta de IP de Seguridad - Cumplimiento rúbrica)
+    // 4. CONSUMO DE API PÚBLICA 
     const apiContainer = document.getElementById('api-container');
     
     if (apiContainer) {
@@ -94,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!response.ok) {
                     throw new Error('Error al conectar con el servidor de red.');
                 }
-                return response.json(); // Conversión de la respuesta con json[cite: 2, 3]
+                return response.json(); // Conversión de la respuesta con json
             })
             .then(data => {
                 // Validación de ausencia de resultados
@@ -103,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
-                // Mostrar los datos externos dentro del DOM[cite: 2, 3]
+                // Mostrar los datos externos dentro del DOM
                 apiContainer.innerHTML = `
                     <div style="background: #e0f7fa; padding: 15px; border-radius: 8px; border-left: 4px solid #004d40;">
                         <p><strong>Dirección IP detectada:</strong> ${data.ip}</p>
@@ -112,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 `;
             })
             .catch(error => {
-                // Manejo de errores obligatorio[cite: 2, 3]
+                // Manejo de errores obligatorio
                 console.error("Hubo un problema con la API:", error);
                 apiContainer.innerHTML = `
                     <p style="color: #c62828;">❌ No se pudo cargar la información de seguridad en este momento. Verifique su conexión a internet.</p>
@@ -121,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
-// PROFE TUVE QUE HACER VARIAS VECES EL FORMULARIO PORQUE NO CUMPLIA CON LAS CONSIGNA, SINO TENGO OTRA PÁG
+// PROFE TUVE QUE HACER VARIAS VECES EL FORMULARIO 
 
 
 
